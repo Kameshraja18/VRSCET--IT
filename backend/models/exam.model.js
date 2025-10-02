@@ -16,7 +16,7 @@ const examSchema = new mongoose.Schema({
   examType: {
     type: String,
     required: true,
-    enum: ["mid", "end"],
+    enum: ["slip test1", "slip test2", "ca test 1", "ca test 2", "model exam"],
   },
   timetableLink: {
     type: String,

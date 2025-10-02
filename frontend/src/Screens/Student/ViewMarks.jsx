@@ -47,8 +47,11 @@ const ViewMarks = () => {
     fetchMarks(semester);
   };
 
-  const midTermMarks = marks.filter((mark) => mark.examId.examType === "mid");
-  const endTermMarks = marks.filter((mark) => mark.examId.examType === "end");
+  const slipTest1Marks = marks.filter((mark) => mark.examId.examType === "slip test1");
+  const slipTest2Marks = marks.filter((mark) => mark.examId.examType === "slip test2");
+  const caTest1Marks = marks.filter((mark) => mark.examId.examType === "ca test 1");
+  const caTest2Marks = marks.filter((mark) => mark.examId.examType === "ca test 2");
+  const modelExamMarks = marks.filter((mark) => mark.examId.examType === "model exam");
 
   return (
     <div className="w-full mx-auto mt-10 flex justify-center items-start flex-col mb-10">
@@ -70,14 +73,14 @@ const ViewMarks = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Mid Term Marks</h2>
+          <h2 className="text-xl font-semibold mb-4">Slip Test 1</h2>
           {dataLoading ? (
             <p className="text-gray-500">Loading...</p>
-          ) : midTermMarks.length > 0 ? (
+          ) : slipTest1Marks.length > 0 ? (
             <div className="space-y-4">
-              {midTermMarks.map((mark) => (
+              {slipTest1Marks.map((mark) => (
                 <div
                   key={mark._id}
                   className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
@@ -104,17 +107,17 @@ const ViewMarks = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500">No mid term marks available</p>
+            <p className="text-gray-500">No slip test 1 marks available</p>
           )}
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">End Term Marks</h2>
+          <h2 className="text-xl font-semibold mb-4">Slip Test 2</h2>
           {dataLoading ? (
             <p className="text-gray-500">Loading...</p>
-          ) : endTermMarks.length > 0 ? (
+          ) : slipTest2Marks.length > 0 ? (
             <div className="space-y-4">
-              {endTermMarks.map((mark) => (
+              {slipTest2Marks.map((mark) => (
                 <div
                   key={mark._id}
                   className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
@@ -141,7 +144,118 @@ const ViewMarks = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500">No end term marks available</p>
+            <p className="text-gray-500">No slip test 2 marks available</p>
+          )}
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4">CA Test 1</h2>
+          {dataLoading ? (
+            <p className="text-gray-500">Loading...</p>
+          ) : caTest1Marks.length > 0 ? (
+            <div className="space-y-4">
+              {caTest1Marks.map((mark) => (
+                <div
+                  key={mark._id}
+                  className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-medium text-gray-800">
+                        {mark.subjectId.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {mark.examId.name}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-semibold text-blue-600">
+                        {mark.marksObtained}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        out of {mark.examId.totalMarks}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500">No CA test 1 marks available</p>
+          )}
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4">CA Test 2</h2>
+          {dataLoading ? (
+            <p className="text-gray-500">Loading...</p>
+          ) : caTest2Marks.length > 0 ? (
+            <div className="space-y-4">
+              {caTest2Marks.map((mark) => (
+                <div
+                  key={mark._id}
+                  className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-medium text-gray-800">
+                        {mark.subjectId.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {mark.examId.name}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-semibold text-blue-600">
+                        {mark.marksObtained}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        out of {mark.examId.totalMarks}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500">No CA test 2 marks available</p>
+          )}
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Model Exam</h2>
+          {dataLoading ? (
+            <p className="text-gray-500">Loading...</p>
+          ) : modelExamMarks.length > 0 ? (
+            <div className="space-y-4">
+              {modelExamMarks.map((mark) => (
+                <div
+                  key={mark._id}
+                  className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-medium text-gray-800">
+                        {mark.subjectId.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {mark.examId.name}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-semibold text-blue-600">
+                        {mark.marksObtained}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        out of {mark.examId.totalMarks}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500">No model exam marks available</p>
           )}
         </div>
       </div>

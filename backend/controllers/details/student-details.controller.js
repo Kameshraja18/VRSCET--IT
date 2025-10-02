@@ -52,16 +52,26 @@ const getAllDetailsController = async (req, res) => {
 
 const registerStudentController = async (req, res) => {
   try {
-    const profile = req.file.filename;
+    const profile = req.file ? req.file.filename : null;
 
     const enrollmentNo = Math.floor(100000 + Math.random() * 900000);
-    const email = `${enrollmentNo}@gmail.com`;
+    const { email } = req.body;
+
+    // Validate email format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return ApiResponse.badRequest("Invalid email format").send(res);
+    }
+
+    // Check if email already exists
+    const existingStudent = await studentDetails.findOne({ email });
+    if (existingStudent) {
+      return ApiResponse.conflict("Email already in use").send(res);
+    }
 
     const user = await studentDetails.create({
       ...req.body,
       profile,
       password: "student123",
-      email,
       enrollmentNo,
     });
 
@@ -191,13 +201,17 @@ const deleteDetailsController = async (req, res) => {
       return ApiResponse.badRequest("Student ID is required").send(res);
     }
 
+    console.log(req.params.id);
+
     const user = await studentDetails.findById(req.params.id);
 
     if (!user) {
       return ApiResponse.notFound("No Student Found").send(res);
     }
 
-    await studentDetails.findByIdAndDelete(req.params.id);
+    await studentDetails.findByIdAndUpdate(req.params.id, {
+      isDelete: 1,
+    });
 
     return ApiResponse.success(null, "Deleted Successfully!").send(res);
   } catch (error) {

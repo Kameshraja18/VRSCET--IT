@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "MERN Stack College Management System",
   "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "seed": "node admin-seeder.js"
+    "seed": "node admin-seeder.js",
+    "build": "echo 'No build step required for backend'"
   },
   "author": "Krish Jotaniya",
   "license": "ISC",

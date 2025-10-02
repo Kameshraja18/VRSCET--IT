@@ -6,11 +6,19 @@ const facultyDetailsSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    facultyId: {
+      type: String,
+      required: true,
+    },
     firstName: {
       type: String,
       required: true,
     },
     lastName: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },
@@ -54,9 +62,25 @@ const facultyDetailsSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    age: {
+      type: Number,
+      required: true,
+      min: 18,
+      max: 70,
+    },
     designation: {
       type: String,
       required: true,
+    },
+    qualification: {
+      type: String,
+      required: true,
+    },
+    experience: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 50,
     },
     joiningDate: {
       type: Date,

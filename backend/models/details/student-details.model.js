@@ -12,9 +12,14 @@ const studentDetailsSchema = new mongoose.Schema(
     },
     middleName: {
       type: String,
-      required: true,
+      required: false,
+      default: "",
     },
     lastName: {
+      type: String,
+      required: true,
+    },
+    fatherName: {
       type: String,
       required: true,
     },
@@ -23,6 +28,10 @@ const studentDetailsSchema = new mongoose.Schema(
       required: true,
     },
     phone: {
+      type: String,
+      required: true,
+    },
+    mobile: {
       type: String,
       required: true,
     },
@@ -44,9 +53,24 @@ const studentDetailsSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    aadhaar: {
+      type: String,
+      required: true,
+    },
+    emis: {
+      type: String,
+      required: true,
+    },
     address: {
       type: String,
       required: true,
+    },
+    primaryAddress: {
+      type: String,
+      required: true,
+    },
+    communicationAddress: {
+      type: String,
     },
     city: {
       type: String,
@@ -61,6 +85,41 @@ const studentDetailsSchema = new mongoose.Schema(
       required: true,
     },
     country: {
+      type: String,
+      required: true,
+    },
+    year: {
+      type: Number,
+      required: true,
+      enum: [1, 2, 3, 4],
+    },
+    tenthMarks: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 100,
+    },
+    twelfthMarks: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 100,
+    },
+    engineeringCutoff: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 200,
+    },
+    tneaId: {
+      type: String,
+      required: true,
+    },
+    rollNumber: {
+      type: String,
+      required: true,
+    },
+    registerNumber: {
       type: String,
       required: true,
     },

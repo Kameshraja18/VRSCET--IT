@@ -31,16 +31,30 @@ const Student = () => {
     firstName: "",
     middleName: "",
     lastName: "",
+    fatherName: "",
     phone: "",
+    mobile: "",
+    email: "",
     semester: "",
     branchId: "",
     gender: "",
     dob: "",
+    aadhaar: "",
+    emis: "",
     address: "",
+    primaryAddress: "",
+    communicationAddress: "",
     city: "",
     state: "",
     pincode: "",
     country: "",
+    year: "",
+    tenthMarks: "",
+    twelfthMarks: "",
+    engineeringCutoff: "",
+    tneaId: "",
+    rollNumber: "",
+    registerNumber: "",
     profile: "",
     status: "active",
     bloodGroup: "",
@@ -224,16 +238,30 @@ const Student = () => {
       firstName: student.firstName || "",
       middleName: student.middleName || "",
       lastName: student.lastName || "",
+      fatherName: student.fatherName || "",
       phone: student.phone || "",
+      mobile: student.mobile || "",
+      email: student.email || "",
       semester: student.semester || "",
       branchId: student.branchId?._id || "",
       gender: student.gender || "",
       dob: student.dob?.split("T")[0] || "",
+      aadhaar: student.aadhaar || "",
+      emis: student.emis || "",
       address: student.address || "",
+      primaryAddress: student.primaryAddress || "",
+      communicationAddress: student.communicationAddress || "",
       city: student.city || "",
       state: student.state || "",
       pincode: student.pincode || "",
       country: student.country || "",
+      year: student.year || "",
+      tenthMarks: student.tenthMarks || "",
+      twelfthMarks: student.twelfthMarks || "",
+      engineeringCutoff: student.engineeringCutoff || "",
+      tneaId: student.tneaId || "",
+      rollNumber: student.rollNumber || "",
+      registerNumber: student.registerNumber || "",
       profile: student.profile || "",
       status: student.status || "active",
       bloodGroup: student.bloodGroup || "",
@@ -280,16 +308,30 @@ const Student = () => {
       firstName: "",
       middleName: "",
       lastName: "",
+      fatherName: "",
       phone: "",
+      mobile: "",
+      email: "",
       semester: "",
       branchId: "",
       gender: "",
       dob: "",
+      aadhaar: "",
+      emis: "",
       address: "",
+      primaryAddress: "",
+      communicationAddress: "",
       city: "",
       state: "",
       pincode: "",
       country: "",
+      year: "",
+      tenthMarks: "",
+      twelfthMarks: "",
+      engineeringCutoff: "",
+      tneaId: "",
+      rollNumber: "",
+      registerNumber: "",
       profile: "",
       status: "active",
       bloodGroup: "",
@@ -561,6 +603,21 @@ const Student = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Father Name
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.fatherName}
+                    onChange={(e) =>
+                      handleFormInputChange("fatherName", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Phone
                   </label>
                   <input
@@ -568,6 +625,36 @@ const Student = () => {
                     value={formData.phone}
                     onChange={(e) =>
                       handleFormInputChange("phone", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Mobile
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.mobile}
+                    onChange={(e) =>
+                      handleFormInputChange("mobile", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      handleFormInputChange("email", e.target.value)
                     }
                     className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
@@ -614,6 +701,157 @@ const Student = () => {
                       </option>
                     ))}
                   </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Year
+                  </label>
+                  <select
+                    value={formData.year}
+                    onChange={(e) =>
+                      handleFormInputChange("year", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  >
+                    <option value="">Select Year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Aadhaar Number
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.aadhaar}
+                    onChange={(e) =>
+                      handleFormInputChange("aadhaar", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    maxLength="12"
+                    pattern="[0-9]{12}"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    EMIS Number
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.emis}
+                    onChange={(e) =>
+                      handleFormInputChange("emis", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    TNEA ID
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.tneaId}
+                    onChange={(e) =>
+                      handleFormInputChange("tneaId", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Roll Number
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.rollNumber}
+                    onChange={(e) =>
+                      handleFormInputChange("rollNumber", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Register Number
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.registerNumber}
+                    onChange={(e) =>
+                      handleFormInputChange("registerNumber", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    10th Marks (%)
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.tenthMarks}
+                    onChange={(e) =>
+                      handleFormInputChange("tenthMarks", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    min="0"
+                    max="100"
+                    step="0.01"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    12th Marks (%)
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.twelfthMarks}
+                    onChange={(e) =>
+                      handleFormInputChange("twelfthMarks", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    min="0"
+                    max="100"
+                    step="0.01"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Engineering Cutoff
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.engineeringCutoff}
+                    onChange={(e) =>
+                      handleFormInputChange("engineeringCutoff", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    min="0"
+                    max="200"
+                    step="0.01"
+                  />
                 </div>
 
                 <div>
@@ -762,6 +1000,36 @@ const Student = () => {
                 </div>
 
                 <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Primary Address
+                  </label>
+                  <textarea
+                    value={formData.primaryAddress}
+                    onChange={(e) =>
+                      handleFormInputChange("primaryAddress", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                    required
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Communication Address
+                  </label>
+                  <textarea
+                    value={formData.communicationAddress}
+                    onChange={(e) =>
+                      handleFormInputChange("communicationAddress", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                    required
+                  />
+                </div>
+
+                <div className="md:col-span-2">
                   <h3 className="text-lg font-semibold mb-4">
                     Emergency Contact
                   </h3>
@@ -820,11 +1088,7 @@ const Student = () => {
               <div className="mt-8 flex justify-between items-center gap-4">
                 <div>
                   <p className="text-sm">
-                    Default login will be{" "}
-                    <span className="font-bold">
-                      {formData.enrollmentNo || "enrollment_no"}@gmail.com
-                    </span>{" "}
-                    and password will be{" "}
+                    Student will login with their email and default password will be{" "}
                     <span className="font-bold">student123</span>
                   </p>
                 </div>

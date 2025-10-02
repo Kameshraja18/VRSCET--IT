@@ -10,8 +10,10 @@ import Loading from "../../components/Loading";
 
 const Faculty = () => {
   const [data, setData] = useState({
+    facultyId: "",
     firstName: "",
     lastName: "",
+    name: "",
     email: "",
     phone: "",
     profile: "",
@@ -22,7 +24,10 @@ const Faculty = () => {
     country: "",
     gender: "",
     dob: "",
+    age: "",
     designation: "",
+    qualification: "",
+    experience: "",
     joiningDate: "",
     salary: "",
     status: "active",
@@ -168,8 +173,10 @@ const Faculty = () => {
 
   const editFacultyHandler = (faculty) => {
     setData({
+      facultyId: faculty.facultyId || "",
       firstName: faculty.firstName || "",
       lastName: faculty.lastName || "",
+      name: faculty.name || "",
       email: faculty.email || "",
       phone: faculty.phone || "",
       profile: faculty.profile || "",
@@ -180,7 +187,10 @@ const Faculty = () => {
       country: faculty.country || "",
       gender: faculty.gender || "",
       dob: faculty.dob?.split("T")[0] || "",
+      age: faculty.age || "",
       designation: faculty.designation || "",
+      qualification: faculty.qualification || "",
+      experience: faculty.experience || "",
       joiningDate: faculty.joiningDate?.split("T")[0] || "",
       salary: faculty.salary || "",
       status: faculty.status || "active",
@@ -226,8 +236,10 @@ const Faculty = () => {
 
   const resetForm = () => {
     setData({
+      facultyId: "",
       firstName: "",
       lastName: "",
+      name: "",
       email: "",
       phone: "",
       profile: "",
@@ -238,7 +250,10 @@ const Faculty = () => {
       country: "",
       gender: "",
       dob: "",
+      age: "",
       designation: "",
+      qualification: "",
+      experience: "",
       joiningDate: "",
       salary: "",
       status: "active",
@@ -348,6 +363,36 @@ const Faculty = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    value={data.name}
+                    onChange={(e) =>
+                      handleInputChange("name", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Faculty ID
+                  </label>
+                  <input
+                    type="text"
+                    value={data.facultyId}
+                    onChange={(e) =>
+                      handleInputChange("facultyId", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Email
                   </label>
                   <input
@@ -401,6 +446,53 @@ const Faculty = () => {
                     onChange={(e) => handleInputChange("dob", e.target.value)}
                     className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Age
+                  </label>
+                  <input
+                    type="number"
+                    value={data.age}
+                    onChange={(e) => handleInputChange("age", e.target.value)}
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    min="18"
+                    max="70"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Qualification
+                  </label>
+                  <input
+                    type="text"
+                    value={data.qualification}
+                    onChange={(e) =>
+                      handleInputChange("qualification", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Experience (in years)
+                  </label>
+                  <input
+                    type="number"
+                    value={data.experience}
+                    onChange={(e) =>
+                      handleInputChange("experience", e.target.value)
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    min="0"
+                    max="50"
                   />
                 </div>
 
@@ -655,6 +747,9 @@ const Faculty = () => {
                 <th className="py-4 px-6 text-left font-semibold">Email</th>
                 <th className="py-4 px-6 text-left font-semibold">Phone</th>
                 <th className="py-4 px-6 text-left font-semibold">
+                  Faculty ID
+                </th>
+                <th className="py-4 px-6 text-left font-semibold">
                   Employee ID
                 </th>
                 <th className="py-4 px-6 text-left font-semibold">
@@ -667,9 +762,10 @@ const Faculty = () => {
               {faculty && faculty.length > 0 ? (
                 faculty.map((item, index) => (
                   <tr key={index} className="border-b hover:bg-blue-50">
-                    <td className="py-4 px-6">{`${item.firstName} ${item.lastName}`}</td>
+                    <td className="py-4 px-6">{item.name || `${item.firstName} ${item.lastName}`}</td>
                     <td className="py-4 px-6">{item.email}</td>
                     <td className="py-4 px-6">{item.phone}</td>
+                    <td className="py-4 px-6">{item.facultyId}</td>
                     <td className="py-4 px-6">{item.employeeId}</td>
                     <td className="py-4 px-6">{item.designation}</td>
                     <td className="py-4 px-6 text-center flex justify-center gap-4">

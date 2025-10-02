@@ -418,7 +418,17 @@ const AddMarks = () => {
                 <div className="border p-3 rounded-md shadow">
                   <span className="text-sm text-gray-500">Exam Type:</span>
                   <p className="text-gray-800">
-                    {selectedExam?.examType === "mid" ? "Mid Term" : "End Term"}
+                    {selectedExam?.examType === "slip test1"
+                      ? "Slip Test 1"
+                      : selectedExam?.examType === "slip test2"
+                      ? "Slip Test 2"
+                      : selectedExam?.examType === "ca test 1"
+                      ? "CA Test 1"
+                      : selectedExam?.examType === "ca test 2"
+                      ? "CA Test 2"
+                      : selectedExam?.examType === "model exam"
+                      ? "Model Exam"
+                      : selectedExam?.examType}
                   </p>
                 </div>
                 <div className="border p-3 rounded-md shadow">

@@ -26,10 +26,10 @@ const Profile = ({ profileData }) => {
           />
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              {`${profileData.firstName} ${profileData.lastName}`}
+              {profileData.name || `${profileData.firstName} ${profileData.lastName}`}
             </h1>
             <p className="text-lg text-gray-600 mb-1">
-              Employee ID: {profileData.employeeId}
+              Faculty ID: {profileData.facultyId || profileData.employeeId}
             </p>
             <p className="text-lg text-blue-600 font-medium">
               {profileData.designation}
@@ -83,6 +83,22 @@ const Profile = ({ profileData }) => {
                 Date of Birth
               </label>
               <p className="text-gray-900">{formatDate(profileData.dob)}</p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">Age</label>
+              <p className="text-gray-900">{profileData.age} years</p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">
+                Qualification
+              </label>
+              <p className="text-gray-900">{profileData.qualification}</p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">
+                Experience
+              </label>
+              <p className="text-gray-900">{profileData.experience} years</p>
             </div>
             <div>
               <label className="text-sm font-medium text-gray-500">

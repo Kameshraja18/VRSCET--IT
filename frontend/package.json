@@ -2,6 +2,10 @@
   "name": "cms-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -21,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:analyze": "npm run build -- --stats && npx webpack-bundle-analyzer build/static/js/*.js",
+    "serve": "serve -s build -l 3000"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +49,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "tailwindcss": "^3.2.7"
+    "serve": "^14.2.1",
+    "tailwindcss": "^3.2.7",
+    "webpack-bundle-analyzer": "^4.9.0"
   }
 }

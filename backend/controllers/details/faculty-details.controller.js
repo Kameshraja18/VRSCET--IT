@@ -32,7 +32,7 @@ const loginFacultyController = async (req, res) => {
 
 const getAllFacultyController = async (req, res) => {
   try {
-    const users = await facultyDetails.find().select("-__v -password");
+    const users = await facultyDetails.find().select("-__v -password").populate("branchId");
     if (!users || users.length === 0) {
       return ApiResponse.notFound("No Faculty Found").send(res);
     }
@@ -47,10 +47,14 @@ const generateEmployeeId = () => {
   return Math.floor(100000 + Math.random() * 900000);
 };
 
+const generateFacultyId = () => {
+  return `FAC${Math.floor(10000 + Math.random() * 90000)}`;
+};
+
 const registerFacultyController = async (req, res) => {
   try {
     const { email, phone } = req.body;
-    const profile = req.file.filename;
+    const profile = req.file ? req.file.filename : null;
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return ApiResponse.badRequest("Invalid email format").send(res);
@@ -70,10 +74,12 @@ const registerFacultyController = async (req, res) => {
     }
 
     const employeeId = generateEmployeeId();
+    const facultyId = generateFacultyId();
 
     const user = await facultyDetails.create({
       ...req.body,
       employeeId,
+      facultyId,
       profile,
       password: "faculty123",
     });
@@ -87,6 +93,24 @@ const registerFacultyController = async (req, res) => {
     ).send(res);
   } catch (error) {
     console.error("Register Error: ", error);
+    return ApiResponse.internalServerError().send(res);
+  }
+};
+
+const getMyDetailsController = async (req, res) => {
+  try {
+    const user = await facultyDetails
+      .findById(req.userId)
+      .select("-password -__v")
+      .populate("branchId");
+
+    if (!user) {
+      return ApiResponse.notFound("User not found").send(res);
+    }
+
+    return ApiResponse.success(user, "Faculty Details Found!").send(res);
+  } catch (error) {
+    console.error("Get My Details Error: ", error);
     return ApiResponse.internalServerError().send(res);
   }
 };
@@ -184,7 +208,8 @@ const getMyFacultyDetailsController = async (req, res) => {
   try {
     const user = await facultyDetails
       .findById(req.userId)
-      .select("-__v -password");
+      .select("-__v -password")
+      .populate("branchId");
     if (!user) {
       return ApiResponse.notFound("User not found").send(res);
     }

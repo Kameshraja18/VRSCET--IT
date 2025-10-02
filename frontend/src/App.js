@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./Screens/Login";
+import Landing from "./Screens/Landing";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import mystore from "./redux/store";
@@ -15,7 +16,8 @@ const App = () => {
       <Provider store={mystore}>
         <Router>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route
               path="/:type/update-password/:resetId"

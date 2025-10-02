@@ -9,7 +9,9 @@ import Login from "./Screens/Auth/Login";
 import Register from "./Screens/Auth/Register";
 import ForgotPassword from "./Screens/Auth/ForgotPassword";
 import ResetPassword from "./Screens/Auth/ResetPassword";
-import Dashboard from "./Screens/Dashboard";
+import AdminPanel from "./Screens/Admin/AdminPanel";
+import FacultyDashboard from "./Screens/Faculty/FacultyDashboard";
+import StudentDashboard from "./Screens/Student/StudentDashboard";
 import Student from "./Screens/Admin/Student";
 import Faculty from "./Screens/Admin/Faculty";
 import Subject from "./Screens/Admin/Subject";
@@ -33,7 +35,7 @@ const App = () => {
           element={
             <ProtectedRoute>
               <AdminLayout>
-                <Dashboard />
+                <AdminPanel />
               </AdminLayout>
             </ProtectedRoute>
           }
@@ -85,7 +87,7 @@ const App = () => {
           element={
             <ProtectedRoute>
               <FacultyLayout>
-                <Dashboard />
+                <FacultyDashboard />
               </FacultyLayout>
             </ProtectedRoute>
           }
@@ -107,7 +109,7 @@ const App = () => {
           element={
             <ProtectedRoute>
               <StudentLayout>
-                <Dashboard />
+                <StudentDashboard />
               </StudentLayout>
             </ProtectedRoute>
           }

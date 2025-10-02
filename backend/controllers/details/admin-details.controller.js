@@ -55,7 +55,7 @@ const registerAdminController = async (req, res, next) => {
   try {
     const { email, phone } = req.body;
 
-    const profile = req.file.filename;
+    const profile = req.file ? req.file.filename : null;
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return ApiResponse.badRequest("Invalid email format").send(res);

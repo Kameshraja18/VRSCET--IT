@@ -30,7 +30,12 @@ app.use("/api/notice", require("./routes/notice.route"));
 app.use("/api/timetable", require("./routes/timetable.route"));
 app.use("/api/material", require("./routes/material.route"));
 app.use("/api/exam", require("./routes/exam.route"));
-app.use("/api/marks", require("./routes/marks.route"));
+app.use("/api/student-assignment", require("./routes/student-assignment.route"));
+app.use("/api/query", require("./routes/query.route"));
+app.use("/api/attendance", require("./routes/attendance.route"));
+app.use("/api/audit-log", require("./routes/audit-log.route"));
+app.use("/api/admin-dashboard", require("./routes/admin-dashboard.route"));
+app.use("/api/mentorship", require("./routes/mentorship.route"));
 
 app.listen(port, () => {
   console.log(`Server Listening On http://localhost:${port}`);

@@ -16,7 +16,7 @@ const Exam = () => {
     name: "",
     date: "",
     semester: "",
-    examType: "mid",
+    examType: "slip test1",
     timetableLink: "",
     totalMarks: "",
   });
@@ -131,7 +131,7 @@ const Exam = () => {
       name: "",
       date: "",
       semester: "",
-      examType: "mid",
+      examType: "slip test1",
       timetableLink: "",
       totalMarks: "",
     });
@@ -223,7 +223,17 @@ const Exam = () => {
                     </td>
                     <td className="py-4 px-6">{item.semester}</td>
                     <td className="py-4 px-6">
-                      {item.examType === "mid" ? "Mid Term" : "End Term"}
+                      {item.examType === "slip test1"
+                        ? "Slip Test 1"
+                        : item.examType === "slip test2"
+                        ? "Slip Test 2"
+                        : item.examType === "ca test 1"
+                        ? "CA Test 1"
+                        : item.examType === "ca test 2"
+                        ? "CA Test 2"
+                        : item.examType === "model exam"
+                        ? "Model Exam"
+                        : item.examType}
                     </td>
                     <td className="py-4 px-6">{item.totalMarks}</td>
                     {loginType !== "Student" && (
@@ -335,8 +345,11 @@ const Exam = () => {
                     className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   >
-                    <option value="mid">Mid Term</option>
-                    <option value="end">End Term</option>
+                    <option value="slip test1">Slip Test 1</option>
+                    <option value="slip test2">Slip Test 2</option>
+                    <option value="ca test 1">CA Test 1</option>
+                    <option value="ca test 2">CA Test 2</option>
+                    <option value="model exam">Model Exam</option>
                   </select>
                 </div>
                 <div>
