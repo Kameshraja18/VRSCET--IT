@@ -10,6 +10,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed": "node admin-seeder.js",
+    "seed:demo": "node demo-seeder.js",
     "build": "echo 'No build step required for backend'"
   },
   "author": "Krish Jotaniya",

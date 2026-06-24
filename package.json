@@ -42,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/your-username/college-management-system/issues"
   },
-  "homepage": "https://github.com/your-username/college-management-system#readme"
+  "homepage": "https://github.com/your-username/college-management-system#readme",
+  "dependencies": {
+    "cors": "^2.8.6"
+  }
 }
